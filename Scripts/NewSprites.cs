@@ -54,36 +54,39 @@ namespace AzMonsterPack
                 Affinity = MobileAffinity.Human,
                 MaleTexture = 1000,
                 FemaleTexture = 1000,
-                CorpseTexture = EnemyBasics.CorpseTexture(405, 2),
+                CorpseTexture = EnemyBasics.CorpseTexture(405, 1),
                 HasIdle = true,
                 HasRangedAttack1 = false,
                 HasRangedAttack2 = false,
                 CanOpenDoors = true,
                 MoveSound = (int)SoundClips.EnemyDaedraLordMove,
-                BarkSound = (int)SoundClips.EnemyOrcWarlordBark,
-                AttackSound = (int)SoundClips.EnemyOrcWarlordAttack,
+                BarkSound = (int)SoundClips.EnemyFrostDaedraBark,
+                AttackSound = (int)SoundClips.EnemyDaedraLordAttack,
                 ParrySounds = true,
                 MapChance = 2,
-                LootTableKey = "Q",
+                LootTableKey = "D",
+                SeesThroughInvisibility = true,
+                SoulPts = 450000,
+                Weight = 450,
                 CastsMagic = true,
-                PrimaryAttackAnimFrames = new int[] { 0, 1, 2, -1, 3, 4, -1, 5, 0 },
+                PrimaryAttackAnimFrames = new int[] { 0, 0, 1, -1, 2, 3, 1, 0 },
                 ChanceForAttack2 = 40,
-                PrimaryAttackAnimFrames2 = new int[] { 4, -1, 5, 0 },
-                HasSpellAnimation = false,
+                PrimaryAttackAnimFrames2 = new int[] { 0, 1, -1, 3, 3, 4, 4 },
+                HasSpellAnimation = true,
                 Team = MobileTeams.Magic,
             });
 
             DaggerfallEntity.RegisterCustomCareerTemplate(DeathbringerCareerIndex, new DFCareer()
             {
                 Name = "Deathbringer",
-                HitPointsPerLevel = 40,
+                HitPointsPerLevel = 48,
                 Strength = 90,
                 Intelligence = 80,
                 Willpower = 80,
-                Agility = 50,
+                Agility = 60,
                 Endurance = 70,
-                Personality = 40,
-                Speed = 60,
+                Personality = 50,
+                Speed = 80,
                 Luck = 70,
                 PrimarySkill1 = DFCareer.Skills­.LongBlade,
                 PrimarySkill2 = DFCareer.Skills.Alteration,
@@ -253,7 +256,7 @@ namespace AzMonsterPack
         {
             var player = GameManager.Instance.PlayerEntity;
 
-            DaggerfallUnityItem item = ItemBuilder.CreateArmor(player.Gender, player.Race, armor, ArmorMaterialTypes.Silver);
+            DaggerfallUnityItem item = ItemBuilder.CreateArmor(player.Gender, player.Race, armor, ArmorMaterialTypes.Steel);
             enemyEntity.ItemEquipTable.EquipItem(item, alwaysEquip: true, playEquipSounds: false);
             enemyEntity.Items.AddItem(item);
             enemyEntity.UpdateEquippedArmorValues(item, equipping: true);
